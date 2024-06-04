@@ -1,17 +1,15 @@
-#ifndef PONTODEPARADA_HPP
-#define PONTODEPARADA_HPP
+// PontoDeParada.hpp
 
-// Inclusão de bibliotecas necessárias
+#ifndef PONTO_DE_PARADA_HPP
+#define PONTO_DE_PARADA_HPP
+
 #include <string>
 #include <vector>
-
-// Inclusão de arquivos hpp do projeto necessários
-#include 'Aluno.hpp'
+#include "Aluno.hpp" // Supondo que o arquivo Aluno.hpp existe e está pronto
 
 class PontoDeParada
 {
 private:
-    // Atributos Privados
     std::string nome;
     double latitude;
     double longitude;
@@ -20,16 +18,14 @@ private:
     static int pontos;
 
 public:
-    // Construtor
-    PontoDeParada(std::string, double, double, int, std::vector<Aluno>);
+    PontoDeParada(const std::string &nome, double latitude, double longitude, int id, const std::vector<Aluno> &alunos);
 
-    // Getters e Setters
-    std::string getNome();
-    double getLatitude();
-    double getLongitude();
-    int getId();
-    std::vector<Aluno> getAlunos();
+    std::string getNome() const;
+    double getLatitude() const;
+    double getLongitude() const;
+    int getId() const;
+    std::vector<Aluno> getAlunos() const;
     static int getPontos();
 };
 
-#endif
+#endif // PONTO_DE_PARADA_HPP

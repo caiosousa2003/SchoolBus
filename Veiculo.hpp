@@ -1,43 +1,52 @@
+// Veiculo.hpp
+
 #ifndef VEICULO_HPP
 #define VEICULO_HPP
 
-// Inclusão de bibliotecas necessárias
 #include <string>
-
-// Inclusão de arquivos hpp do projeto necessários
-#include 'Contrato.hpp'
+#include <iostream>
+#include "Contrato.hpp" // Supondo que o arquivo Contrato.hpp existe e está pronto
 
 class Veiculo
 {
 private:
-    // Atributos Privados
     std::string placa;
     int ano;
     std::string modelo;
     int capacidade;
     int tipo;
     int numcontrato;
-    Contrato contrato;
+    Contrato *contrato;
 
 public:
-    // Construtores
-    Veiculo(std::string, int, std::string, int, int);
-    Veiculo(std::string, int, std::string, int);
+    // Construtor com veiculo alugado
+    Veiculo(const std::string &placa, int ano, const std::string &modelo, int capacidade, int numcontrato);
 
-    // Getters e Setters
-    std::string getPlaca();
-    int getAno();
-    std::string getModelo();
-    int getCapacidade();
-    int getNumContrato();
-    Contrato getContrato();
-    void setPlaca(std::string);
-    void setAno(int);
-    void setModelo(std::string);
-    void setCapacidade(int);
+    // Construtor com veiculo próprio
+    Veiculo(const std::string &placa, int ano, const std::string &modelo, int capacidade);
 
-    // Funções específicas do obejto
-    std::string verificarTipo();
+    std::string getPlaca() const;
+    void setPlaca(const std::string &placa);
+
+    int getAno() const;
+    void setAno(int ano);
+
+    std::string getModelo() const;
+    void setModelo(const std::string &modelo);
+
+    int getCapacidade() const;
+    void setCapacidade(int capacidade);
+
+    int getTipo() const;
+    void setTipo(int tipo);
+
+    int getNumcontrato() const;
+    void setNumcontrato(int numcontrato);
+
+    std::string verificarTipo() const;
+
+    Contrato *getContrato() const;
+    void setContrato(Contrato *contrato);
 };
 
-#endif
+#endif // VEICULO_HPP

@@ -1,34 +1,30 @@
+// Pessoa.hpp
+
 #ifndef PESSOA_HPP
 #define PESSOA_HPP
 
-// Inclusão de bibliotecas necessárias
 #include <string>
-
-// Inclusão de arquivos hpp do projeto necessários
 #include 'Endereco.hpp'
 
 class Pessoa
 {
 private:
-    // Atributos Privados
     std::string nome_oficial;
     std::string cpf_cnpj;
     Endereco endereco;
     std::string telefone;
 
+protected:
+    std::string getNomeOficial() const;
+    std::string getCpfCnpj() const;
+    Endereco getEndereco() const;
+    std::string getTelefone() const;
+
 public:
-    // Construtor
-    Pessoa(std::string, std::string, Endereco, std::string);
+    Pessoa(const std::string &nome_oficial, const std::string &cpf_cnpj, const Endereco &endereco, const std::string &telefone);
 
-    // Getters e Setters - protected
-    std::string getNomeOficial();
-    std::string getCpfCnpj();
-    std::string getEndereco();
-    std::string getTelefone();
-
-    // Funções específicas do obejto
-    std::string imprimirDados();
-    std::string verificarTipo();
+    std::string apresentarDados() const;
+    std::string verificarTipo() const;
 };
 
-#endif
+#endif // PESSOA_HPP

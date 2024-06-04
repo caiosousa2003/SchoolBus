@@ -1,32 +1,26 @@
+// Rota.hpp
+
 #ifndef ROTA_HPP
 #define ROTA_HPP
 
-// Inclusão de bibliotecas necessárias
 #include <vector>
-
-// Inclusão de arquivos hpp do projeto necessários
-#include 'PontoDeParada.hpp'
+#include "PontoDeParada.hpp" // Supondo que o arquivo PontoDeParada.hpp existe e está pronto
 
 class Rota
 {
 private:
-    // Atributos Privados
     int id;
     std::vector<PontoDeParada> pontosDeParada;
     static int rotas;
 
 public:
-    // Construtor
     Rota();
 
-    // Getters e Setters
-    int getId();
+    int getId() const;
+    void addPontoDeParada(const PontoDeParada &a);
+    std::vector<PontoDeParada> getPontosDeParada() const;
     static int getRotas();
-    std::vector<PontoDeParada> getPontosDeParada();
-
-    // Funções específicas do obejto
-    int demanda();
-    void addPontoDeParada(PontoDeParada);
+    int demanda() const;
 };
 
-#endif
+#endif // ROTA_HPP

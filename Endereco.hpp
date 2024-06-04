@@ -1,24 +1,22 @@
+// Endereco.hpp
+
 #ifndef ENDERECO_HPP
 #define ENDERECO_HPP
 
-// Inclusão de bibliotecas necessárias
 #include <string>
 
 class Endereco
 {
 private:
-    // Atributos Privados
     std::string rua;
     int numero;
     std::string complemento;
     std::string bairro;
 
 public:
-    // Construtor
-    Endereco(std::string, int, std::string, std::string);
+    Endereco(const std::string &rua, int numero, const std::string &complemento, const std::string &bairro);
 
-    // Funções específicas do obejto
-    std::string getEndereco();
+    std::string getEndereco() const;
 };
 
-#endif
+#endif // ENDERECO_HPP

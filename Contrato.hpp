@@ -1,50 +1,47 @@
+// Contrato.hpp
+
 #ifndef CONTRATO_HPP
 #define CONTRATO_HPP
 
-// Inclusão de bibliotecas necessárias
 #include <string>
 #include <vector>
-#include <boost/date_time/gregorian/gregorian.hpp>
-
-// Inclusão de arquivos hpp do projeto necessários
-#include 'Motorista.hpp'
-#include 'Veiculo.hpp'
-#include 'PessoaJuridica.hpp'
+#include <ctime> // Para std::tm
+#include "Motorista.hpp"
+#include "Veiculo.hpp"
+#include "PessoaJuridica.hpp"
+#include "Fornecedor.hpp"
 
 class Contrato
 {
 private:
-    // Atributos Privados
-    int numContrato;
-    boost::gregorian::date dataInicio;
-    boost::gregorian::date dataFim;
+    int numcontrato;
+    std::tm dateinicio;
+    std::tm datefim;
     double valor;
     std::vector<Motorista> motoristas;
     std::vector<Veiculo> veiculos;
     std::vector<PessoaJuridica> fornecedores;
 
 public:
-    // Construtor
-    Contrato(int, boost::gregorian::date, boost::gregorian::date, double);
+    Contrato(int numcontrato, const std::tm &datainicio, const std::tm &datafim, double valor);
 
-    // Getters e Setters
-    int getNumContrato();
-    boost::gregorian::date getDataInicio();
-    boost::gregorian::date getDataFim();
-    double getValor();
-    std::vector<Motorista> getMotoristas();
-    std::vector<Veiculo> getVeiculos();
-    std::vector<PessoaJuridica> getFornecedores();
+    bool addMotorista(Motorista motorista);
+    bool addVeiculo(Veiculo veiculo);
+    bool addFornecedor(PessoaJuridica *a);
 
-    // Funções específicas do obejto
-    bool addMotorista(Motorista);
-    bool addVeiculo(Veiculo);
-    bool addFornecedor(PessoaJuridica);
-    bool removeMotorista(Motorista);
-    bool removeMotorista(std::string);
-    bool removeVeiculo(Veiculo);
-    bool removeVeiculo(std::string);
-    void imprimirDados();
+    bool removeMotorista(Motorista motorista);
+    bool removeMotorista(const std::string &cpfcnpj);
+    bool removeVeiculo(Veiculo veiculo);
+    bool removeVeiculo(const std::string &placa);
+
+    int getNumcontrato() const;
+    std::tm getDateinicio() const;
+    std::tm getDatefim() const;
+    double getValor() const;
+
+    std::vector<Motorista> getMotoristas() const;
+    std::vector<Veiculo> getVeiculos() const;
+    std::vector<PessoaJuridica> getFornecedores() const;
 };
 
-#endif
+#endif // CONTRATO_HPP
