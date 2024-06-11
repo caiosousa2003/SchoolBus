@@ -17,12 +17,12 @@
 // Implementar outras classes conforme necessário
 
 vector<Escola> escolas;
-vector<string> motoristas; // Placeholder para a classe Motorista
-vector<string> veiculos;   // Placeholder para a classe Veiculo
-vector<string> contratos;  // Placeholder para a classe Contrato
-vector<string> pontos;     // Placeholder para a classe PontoDeParada
-vector<string> rotas;      // Placeholder para a classe Rota
-vector<string> pessoas;    // Placeholder para a classe Pessoa
+vector<Motorista> motoristas; // Placeholder para a classe Motorista
+vector<Veiculo> veiculos;     // Placeholder para a classe Veiculo
+vector<Contrato> contratos;   // Placeholder para a classe Contrato
+vector<PontoDeParada> pontos; // Placeholder para a classe PontoDeParada
+vector<Rota> rotas;           // Placeholder para a classe Rota
+vector<Pessoa> pessoas;       // Placeholder para a classe Pessoa
 
 using namespace std;
 
