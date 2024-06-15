@@ -13,7 +13,7 @@ private:
 public:
     PessoaJuridica(const std::string &nome_oficial, const std::string &cpf_cnpj, const Endereco &endereco, const std::string &telefone,
                    const std::string &nomeFantasia, int numFuncionarios);
-
+    virtual ~PessoaJuridica()=default; // coloquei esse destrutor para consertar o contrato.cpp  que usa dynamic_cast
     std::string getNome() const;
     std::string getNomeFantasia() const;
     int getNumFuncionarios() const;
