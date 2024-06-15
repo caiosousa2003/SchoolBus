@@ -30,7 +30,9 @@ public:
     PontoDeParada *getPontoDeParada() const;
     void setPontoDeParada(PontoDeParada *pontoDeParada);
 
-    std::string apresentarDados() const override;
+    // std::string apresentarDados() const override;
+    // tranformei em virtual para poder usar o override e o conceito de class abstrata
+    virtual std:: string apresentarDados()=0;
 };
 
 #endif // ALUNO_HPP
