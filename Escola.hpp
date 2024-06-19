@@ -12,8 +12,10 @@ private:
     std::vector<Aluno *> alunos;
 
 public:
-    Escola(const std::string &nome_oficial, const std::string &cpf_cnpj, const Endereco &endereco,
-           const std::string &telefone, const std::string &nomeFantasia, int numFuncionarios);
+    Escola(const std::string &nome_oficial, const std::string &cpf_cnpj, 
+           const Endereco &endereco, const std::string &telefone,
+           const std::string &nomeFantasia, int numFuncionarios
+           );
 
     void matriculaAluno(const std::string &nome_oficial, const std::string &cpf_cnpj, const Endereco &endereco,
                         const std::string &telefone, const std::string &nomeSocial, const std::string &mae,

@@ -13,14 +13,13 @@ private:
     std::string telefone;
 
 protected:
-    std::string getNomeOficial() const;
     std::string getCpfCnpj() const;
     Endereco getEndereco() const;
     std::string getTelefone() const;
 
 public:
     Pessoa(const std::string &nome_oficial, const std::string &cpf_cnpj, const Endereco &endereco, const std::string &telefone);
-
+    std::string getNomeOficial() const;
     virtual std::string apresentarDados() const;
     std::string verificarTipo() const;
 };
