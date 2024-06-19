@@ -1,10 +1,8 @@
-// Rota.hpp
-
 #ifndef ROTA_HPP
 #define ROTA_HPP
 
 #include <vector>
-#include "PontoDeParada.hpp" // Supondo que o arquivo PontoDeParada.hpp existe e está pronto
+#include "PontoDeParada.hpp" 
 
 class Rota
 {
@@ -23,4 +21,4 @@ public:
     int demanda() const;
 };
 
-#endif // ROTA_HPP
+#endif 
