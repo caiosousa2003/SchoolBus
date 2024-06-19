@@ -1,11 +1,9 @@
-// Veiculo.hpp
-
 #ifndef VEICULO_HPP
 #define VEICULO_HPP
 
 #include <string>
 #include <iostream>
-#include "Contrato.hpp" // Supondo que o arquivo Contrato.hpp existe e está pronto
+#include "Contrato.hpp" 
 
 class Veiculo
 {
@@ -49,4 +47,4 @@ public:
     void setContrato(Contrato *contrato);
 };
 
-#endif // VEICULO_HPP
+#endif 
