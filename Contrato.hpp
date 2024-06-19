@@ -1,11 +1,9 @@
-// Contrato.hpp
-
 #ifndef CONTRATO_HPP
 #define CONTRATO_HPP
 
 #include <string>
 #include <vector>
-#include <ctime> // Para std::tm
+#include <ctime> 
 #include "Motorista.hpp"
 #include "Veiculo.hpp"
 #include "PessoaJuridica.hpp"
@@ -21,7 +19,7 @@ private:
     std::vector<Motorista> motoristas;
     std::vector<Veiculo> veiculos;
     std::vector<PessoaJuridica> fornecedores;
-
+    
 public:
     Contrato(int numcontrato, const std::tm &datainicio, const std::tm &datafim, double valor);
 
@@ -42,6 +40,7 @@ public:
     std::vector<Motorista> getMotoristas() const;
     std::vector<Veiculo> getVeiculos() const;
     std::vector<PessoaJuridica> getFornecedores() const;
+    
 };
 
-#endif // CONTRATO_HPP
+#endif 
