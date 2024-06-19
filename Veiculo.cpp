@@ -1,5 +1,3 @@
-// Veiculo.cpp
-
 #include "Veiculo.hpp"
 
 Veiculo::Veiculo(const std::string &placa, int ano, const std::string &modelo, int capacidade, int numcontrato)
