@@ -1,7 +1,5 @@
-// Contrato.cpp
-
 #include "Contrato.hpp"
-#include <algorithm> // Para std::find_if
+#include <algorithm> 
 
 Contrato::Contrato(int numcontrato, const std::tm &datainicio, const std::tm &datafim, double valor)
     : numcontrato(numcontrato), dateinicio(datainicio), datefim(datafim), valor(valor) {}
@@ -38,7 +36,7 @@ bool Contrato::addVeiculo(Veiculo veiculo)
 
 bool Contrato::addFornecedor(PessoaJuridica *a)
 {
-    if (Fornecedor *f = dynamic_cast<Fornecedor *>(a))
+    if (Fornecedor *f = dynamic_cast<Fornecedor *>(a)) 
     {
         fornecedores.push_back(*a);
         f->addContrato(this);
