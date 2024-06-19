@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <string>
 #include <sstream>
@@ -323,6 +324,8 @@ void criarContrato()
     }
     contratos.push_back("Contrato"); 
 }
+//////////modificar aqui em cima, lógica de adicionar fornecedor ao contrato
+
 
 void criarEscola()
 {
@@ -416,6 +419,7 @@ void criarRota()
         if (i == 0)
             break;
         rota.addPontoDeParada(PontoDeParada("Nome", 0, 0, 0, vector<string>())); 
+        // Adicionar o "nome" certo, consertar a lógica do PontoDeParada
     } while (i != 0);
 
     rotas.push_back("Rota"); 
@@ -550,6 +554,7 @@ int main()
         case 2:
         {
             string rota = escolherRota();
+            // ????? essa função não existe em lugar nenhum
             cout << "\nDemanda da Rota " << rota << ": [Demanda]" << "\n"
                  << endl;
         }
