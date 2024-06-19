@@ -1,5 +1,3 @@
-// Pessoa.hpp
-
 #ifndef PESSOA_HPP
 #define PESSOA_HPP
 
@@ -27,4 +25,4 @@ public:
     std::string verificarTipo() const;
 };
 
-#endif // PESSOA_HPP
+#endif 
