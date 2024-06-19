@@ -1,5 +1,3 @@
-// Endereco.hpp
-
 #ifndef ENDERECO_HPP
 #define ENDERECO_HPP
 
@@ -19,4 +17,4 @@ public:
     std::string getEndereco() const;
 };
 
-#endif // ENDERECO_HPP
+#endif 
