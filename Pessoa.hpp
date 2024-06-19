@@ -4,7 +4,7 @@
 #define PESSOA_HPP
 
 #include <string>
-#include 'Endereco.hpp'
+#include "Endereco.hpp"
 
 class Pessoa
 {
@@ -23,7 +23,7 @@ protected:
 public:
     Pessoa(const std::string &nome_oficial, const std::string &cpf_cnpj, const Endereco &endereco, const std::string &telefone);
 
-    std::string apresentarDados() const;
+    virtual std::string apresentarDados() const;
     std::string verificarTipo() const;
 };
 
