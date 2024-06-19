@@ -1,14 +1,11 @@
-// PessoaFisica.hpp
-
 #ifndef PESSOA_FISICA_HPP
 #define PESSOA_FISICA_HPP
 
 #include <string>
 #include <iostream>
 #include "Pessoa.hpp"
-#include "Endereco.hpp" // Supondo que o arquivo Endereco.hpp existe e está pronto
-#include <ctime>        // Para usar std::tm no lugar de java.util.Date
-
+#include "Endereco.hpp" 
+#include <ctime>       
 class PessoaFisica : public Pessoa
 {
 private:
