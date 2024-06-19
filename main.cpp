@@ -14,7 +14,7 @@
 #include 'Rota.hpp'
 #include 'Veiculo.hpp'
 
-// Implementar outras classes conforme necessário
+
 
 vector<Escola> escolas;
 vector<Motorista> motoristas; // Placeholder para a classe Motorista
@@ -313,7 +313,7 @@ void criarContrato()
     {
         for (size_t idx = 0; idx < pessoas.size(); ++idx)
         {
-            cout << idx << " - " << "NomeOficial"; // Placeholder para exibir nome oficial do fornecedor
+            cout << idx << " - " << "NomeOficial"; 
         }
         cout << "\nInsira o número correspondente: ";
         cin >> n;
@@ -321,7 +321,7 @@ void criarContrato()
 
         contrato.addFornecedor(/* parâmetros apropriados */);
     }
-    contratos.push_back("Contrato"); // Placeholder para adicionar objeto Contrato à lista de contratos
+    contratos.push_back("Contrato"); 
 }
 
 void criarEscola()
@@ -342,7 +342,7 @@ void criarEscola()
     cin.ignore();
 
     Endereco endereco = criarEndereco();
-    escolas.push_back("Escola"); // Placeholder para adicionar objeto Escola à lista de escolas
+    escolas.push_back("Escola"); 
     cout << "Escola criada com sucesso! Voltando para menu" << endl;
 }
 
@@ -370,7 +370,7 @@ void criarPontoParada()
         cout << "\nSelecione a Escola do aluno para esse ponto de parada: ";
         for (size_t idx = 0; idx < escolas.size(); ++idx)
         {
-            cout << (idx + 1) << " - " << "Nome"; // Placeholder para exibir nome da escola
+            cout << (idx + 1) << " - " << "Nome"; 
         }
         cout << "\nInsira o número correspondente (Quando finalizar, insira 0): ";
         cin >> i;
@@ -383,7 +383,7 @@ void criarPontoParada()
             vector<string> alunosEscola = escolas[i - 1].getAlunos();
             for (size_t j = 0; j < alunosEscola.size(); ++j)
             {
-                cout << (j + 1) << " - " << "NomeCivil"; // Placeholder para exibir nome civil do aluno
+                cout << (j + 1) << " - " << "NomeCivil"; 
             }
             cout << "\nInsira o número correspondente (Quando finalizar, insira 0): ";
             cin >> n;
@@ -394,7 +394,7 @@ void criarPontoParada()
         } while (n != 0);
     } while (i != 0);
 
-    pontos.push_back("PontoDeParada"); // Placeholder para adicionar objeto PontoDeParada à lista de pontos
+    pontos.push_back("PontoDeParada"); 
     cout << "Ponto de Parada criado com sucesso! Voltando para menu" << endl;
 }
 
@@ -408,17 +408,17 @@ void criarRota()
         cout << "Rota criada com sucesso! Adicionando pontos a ela:";
         for (size_t idx = 0; idx < pontos.size(); ++idx)
         {
-            cout << (idx + 1) << " - " << "Nome"; // Placeholder para exibir nome do ponto de parada
+            cout << (idx + 1) << " - " << "Nome"; 
         }
         cout << "\nInsira o número correspondente (Quando finalizar, insira 0): ";
         cin >> i;
         cin.ignore();
         if (i == 0)
             break;
-        rota.addPontoDeParada(PontoDeParada("Nome", 0, 0, 0, vector<string>())); // Placeholder para adicionar ponto à rota
+        rota.addPontoDeParada(PontoDeParada("Nome", 0, 0, 0, vector<string>())); 
     } while (i != 0);
 
-    rotas.push_back("Rota"); // Placeholder para adicionar objeto Rota à lista de rotas
+    rotas.push_back("Rota"); 
     cout << "Pontos adicionados com sucesso! Voltando para menu" << endl;
 }
 
