@@ -22,4 +22,4 @@ public:
     std::string apresentarDados() const override;
 };
 
-#endif // PESSOAJURIDICA_HPP
+#endif 
