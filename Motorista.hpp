@@ -1,5 +1,3 @@
-// Motorista.hpp
-
 #ifndef MOTORISTA_HPP
 #define MOTORISTA_HPP
 
@@ -40,4 +38,4 @@ public:
     std::string apresentarDados() const override;
 };
 
-#endif // MOTORISTA_HPP
+#endif 

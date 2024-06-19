@@ -1,5 +1,3 @@
-// Endereco.cpp
-
 #include "Endereco.hpp"
 
 Endereco::Endereco(const std::string &rua, int numero, const std::string &complemento, const std::string &bairro)

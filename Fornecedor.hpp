@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "PessoaJuridica.hpp"
-#include "Contrato.hpp" // Make sure this header file is defined properly.
+#include "Contrato.hpp" 
 
 class Fornecedor : public PessoaJuridica
 {
@@ -18,4 +18,4 @@ public:
     std::string apresentarDados() const override;
 };
 
-#endif // FORNECEDOR_HPP
+#endif 

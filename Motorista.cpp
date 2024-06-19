@@ -1,5 +1,3 @@
-// Motorista.cpp
-
 #include "Motorista.hpp"
 #include <iostream>
 #include <sstream>

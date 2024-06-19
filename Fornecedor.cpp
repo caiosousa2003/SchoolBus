@@ -11,5 +11,5 @@ void Fornecedor::addContrato(Contrato *a)
 
 std::string Fornecedor::apresentarDados() const
 {
-    return PessoaJuridica::apresentarDados(); // Plus any additional data formatting as needed
+    return PessoaJuridica::apresentarDados();
 }

@@ -1,7 +1,5 @@
-// Pessoa.cpp
-
 #include "Pessoa.hpp"
-#include "Aluno.hpp" // Supondo que as classes Aluno, Motorista, Escola, Fornecedor estão prontas
+#include "Aluno.hpp" 
 #include "Motorista.hpp"
 #include "Escola.hpp"
 #include "Fornecedor.hpp"

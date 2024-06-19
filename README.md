@@ -1,6 +1,6 @@
 # Projeto SchoolBus
 
-Este é um projeto de exemplo que implementa um sistema de gerenciamento de transporte escolar para a Secretaria de Educação. O projeto é desenvolvido em Java e utiliza conceitos de programação orientada a objetos.
+Este é um projeto de exemplo que implementa um sistema de gerenciamento de transporte escolar para a Secretaria de Educação. O projeto é desenvolvido em C++ e utiliza conceitos de programação orientada a objetos.
 
 ## Funcionalidades
 
@@ -18,7 +18,7 @@ O projeto SchoolBus possui as seguintes funcionalidades:
 
 ## Estrutura do Projeto
 
-O projeto SchoolBus está organizado em classes Python separadas, cada uma representando uma entidade ou funcionalidade do sistema, cada classe está implementada em um arquivo python individual, e possui um código teste para verificação da funcionalidade individual de cada classe. As principais classes incluem:
+O projeto SchoolBus está organizado em classes separadas, cada uma representando uma entidade ou funcionalidade do sistema, cada classe está implementada em um arquivo python individual, e possui um código teste para verificação da funcionalidade individual de cada classe. As principais classes incluem:
 
 - `Motorista`: Representa informações sobre motoristas, incluindo dados pessoais e contratos associados.
 - `Veiculo`: Representa informações sobre veículos, incluindo detalhes como placa, modelo e contratos associados.
@@ -33,10 +33,9 @@ O projeto SchoolBus está organizado em classes Python separadas, cada uma repre
 ## Como Executar o Projeto
 
 1. Clone ou faça o download deste repositório para o seu computador.
-2. Certifique-se de ter o Pyhton instalado em sua máquina.
-3. Compile os arquivos `.py` em um terminal ou IDE de sua escolha.
-4. Execute a classe `AplicacaoSchoolBus` para iniciar o programa interativo.
-5. Caso queira avaliar as vlasses individualmente, pode executar os arquivos individuais, já existe um código teste.
+2. Certifique-se de ter um compilador C++ instalado em sua máquina.
+3. Compile os arquivos `.cpp` utilizando o compilador de sua escolha (por exemplo, g++ no Linux ou Visual Studio no Windows).
+4. Execute o programa compilado para iniciar a aplicação interativa.
 
 ## Uso do Programa
 

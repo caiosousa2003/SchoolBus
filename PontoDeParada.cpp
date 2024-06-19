@@ -1,5 +1,3 @@
-// PontoDeParada.cpp
-
 #include "PontoDeParada.hpp"
 
 int PontoDeParada::pontos = 0;
