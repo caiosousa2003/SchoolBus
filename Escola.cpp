@@ -1,5 +1,5 @@
 #include "Escola.hpp"
-#include <sstream> // For std::stringstream
+#include <sstream> 
 
 Escola::Escola(const std::string &nome_oficial, const std::string &cpf_cnpj, const Endereco &endereco,
                const std::string &telefone, const std::string &nomeFantasia, int numFuncionarios)
@@ -31,7 +31,7 @@ std::string Escola::exibirAlunos() const
 
 std::string Escola::apresentarDados() const
 {
-    return PessoaJuridica::apresentarDados(); // Plus any additional formatting as needed
+    return PessoaJuridica::apresentarDados(); 
 }
 
 const std::vector<Aluno *> &Escola::getAlunos() const
