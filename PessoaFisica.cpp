@@ -1,5 +1,3 @@
-// PessoaFisica.cpp
-
 #include "PessoaFisica.hpp"
 
 PessoaFisica::PessoaFisica(const std::string &nome_oficial, const std::string &cpf_cnpj, const Endereco &endereco, const std::string &telefone,
