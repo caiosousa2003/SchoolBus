@@ -51,7 +51,7 @@ void Aluno::setPontoDeParada(PontoDeParada *pontoDeParada)
 }
 
 
-std::string Aluno::apresentarDados(){
+std::string Aluno::apresentarDados() const{
     std::ostringstream oss;
     oss<<"\nMatricula: "<<getMatricula()
        <<"\nSérie: "<<getSerie()<<std::endl;
