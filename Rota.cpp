@@ -1,5 +1,3 @@
-// Rota.cpp
-
 #include "Rota.hpp"
 
 int Rota::rotas = 0;
