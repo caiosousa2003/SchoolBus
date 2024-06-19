@@ -1,11 +1,9 @@
-// PontoDeParada.hpp
-
 #ifndef PONTO_DE_PARADA_HPP
 #define PONTO_DE_PARADA_HPP
 
 #include <string>
 #include <vector>
-#include "Aluno.hpp" // Supondo que o arquivo Aluno.hpp existe e está pronto
+#include "Aluno.hpp" 
 
 class PontoDeParada
 {
@@ -28,4 +26,4 @@ public:
     static int getPontos();
 };
 
-#endif // PONTO_DE_PARADA_HPP
+#endif 
