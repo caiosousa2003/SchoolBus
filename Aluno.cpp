@@ -1,5 +1,4 @@
-// Aluno.cpp
-
+// Classe aluno é responsavel por admistrar todas as informações fos alunos e as informações de paradas
 #include "Aluno.hpp"
 #include <sstream>
 #include <iomanip>
@@ -9,6 +8,8 @@ Aluno::Aluno(const std::string &nome_oficial, const std::string &cpf_cnpj, const
              const std::tm &nascimento, int matricula, const std::string &serie)
     : PessoaFisica(nome_oficial, cpf_cnpj, endereco, telefone, nomeSocial, mae, pai, naturalidade, nascimento),
       matricula(matricula), serie(serie), escola(nullptr), pontoDeParada(nullptr) {}
+
+Aluno::~Aluno(){}
 
 std::string Aluno::getNomeCivil() const
 {
@@ -50,19 +51,14 @@ void Aluno::setPontoDeParada(PontoDeParada *pontoDeParada)
     this->pontoDeParada = pontoDeParada;
 }
 
-std::string Aluno::apresentarDados() const
-{
-    std::ostringstream oss;
-    oss << PessoaFisica::apresentarDados()
-        << "\nMatrícula: " << getMatricula()
-        << "\nSérie: " << getSerie();
-    if (getEscola() != nullptr)
-    {
-        oss << "\nEscola: " << getEscola()->getNome();
+std::string Aluno::apresentarDados(){
+    std::string dados="\nMatricula" + std::to_string(getMatricula)+
+                        "\nSérie "+getSerie()+"\n";
+    if(getEscola()!=nullptr){
+        dados+="\nEscola "+getEscola()->getNome();
     }
-    if (getPontoDeParada() != nullptr)
-    {
-        oss << "\nPonto de Parada: " << getPontoDeParada()->getNome();
+    if(getPontoDeParada()!= nullptr){
+        dados+= "\nPonto de Parada "+ getPontoDeParada()->getNome();
     }
-    return oss.str();
+    return dados;
 }
