@@ -28,7 +28,7 @@ O projeto SchoolBus está organizado em classes separadas, cada uma representand
 - `PontoDeParada`: Representa pontos de parada para rotas de transporte escolar, incluindo a associação de alunos.
 - `Rota`: Representa rotas de transporte escolar, incluindo pontos de parada e cálculo de demanda.
 - `Fornecedor`: Representa as informações sobre o fornecedor, incluindo dados empresarias e de contrato.
-- Há a existência de outras classes auxiliares como `Endereço` e outras classes utilizadas para confecção das demais classes, que inclusive, poderiam ser implementadas como abstratas, como `Pessoa`, `PessoaJuridica` e `PessoaFisica`.
+- Há a existência de outras classes auxiliares como `Endereço` e outras classes utilizadas para confecção das demais classes, que inclusive, foram implementadas como abstratas para assim explorar os conhecimentos adquiridos na matéria, como `Pessoa`, `PessoaJuridica` e `PessoaFisica`.
 
 ## Como Executar o Projeto
 
@@ -39,6 +39,6 @@ O projeto SchoolBus está organizado em classes separadas, cada uma representand
 
 ## Uso do Programa
 
-O programa interativo permitirá que você crie e gerencie motoristas, veículos, contratos, alunos, escolas, pontos de parada e rotas. Você também poderá calcular a demanda total de alunos em uma rota específica.
+O programa interativo permitirá que você crie e gerencie motoristas, veículos, contratos, alunos, escolas, pontos de parada e rotas. Você também poderá calcular a demanda total de alunos em uma rota específica. Para navegar na aplicação basta inserir as informações que ele requer, navegando pelo menus interativos que a própria aplicação possui.
 
 Siga as instruções no programa para usar essas funcionalidades.
