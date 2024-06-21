@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 #include "PessoaJuridica.hpp"
-#include "Aluno.hpp" // Ensure that Aluno.hpp is defined properly.
+#include "Aluno.hpp" 
 
 class Escola : public PessoaJuridica
 {
@@ -25,7 +25,7 @@ public:
     std::string apresentarDados() const override;
     const std::vector<Aluno *> &getAlunos() const;
 
-    ~Escola(); // Destructor to handle dynamic memory
+    ~Escola(); 
 };
 
 #endif // ESCOLA_HPP
