@@ -18,7 +18,7 @@ O projeto SchoolBus possui as seguintes funcionalidades:
 
 ## Estrutura do Projeto
 
-O projeto SchoolBus está organizado em classes separadas, cada uma representando uma entidade ou funcionalidade do sistema, cada classe está implementada em um arquivo python individual, e possui um código teste para verificação da funcionalidade individual de cada classe. As principais classes incluem:
+O projeto SchoolBus está organizado em classes separadas, cada uma representando uma entidade ou funcionalidade do sistema, cada classe está implementada em um arquivo C++ individual, e possui um código teste para verificação da funcionalidade individual de cada classe. As principais classes incluem:
 
 - `Motorista`: Representa informações sobre motoristas, incluindo dados pessoais e contratos associados.
 - `Veiculo`: Representa informações sobre veículos, incluindo detalhes como placa, modelo e contratos associados.
