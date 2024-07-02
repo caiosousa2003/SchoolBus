@@ -50,34 +50,19 @@ void Aluno::setPontoDeParada(PontoDeParada *pontoDeParada)
     this->pontoDeParada = pontoDeParada;
 }
 
-
-std::string Aluno::apresentarDados() const{
+std::string Aluno::apresentarDados() const
+{
     std::ostringstream oss;
-    oss<<"\nMatricula: "<<getMatricula()
-       <<"\nSérie: "<<getSerie()<<std::endl;
+    oss << "\nMatricula: " << getMatricula()
+        << "\nSérie: " << getSerie() << std::endl;
 
-    if(getEscola()!=nullptr){
-        oss<<"\nEscola: "<<getEscola()->getNome();
+    if (getEscola() != nullptr)
+    {
+        oss << "\nEscola: " << getEscola()->getNome();
     }
-    if(getPontoDeParada()!=nullptr){
-        oss<<"\nPonto de Parada: "<<getPontoDeParada()->getNome();
+    if (getPontoDeParada() != nullptr)
+    {
+        oss << "\nPonto de Parada: " << getPontoDeParada()->getNome();
     }
     return oss.str();
-
 }
-// std::string Aluno::apresentarDados() const
-// {
-//     std::ostringstream oss;
-//     oss << PessoaFisica::apresentarDados()
-//         << "\nMatrícula: " << getMatricula()
-//         << "\nSérie: " << getSerie();
-//     if (getEscola() != nullptr)
-//     {
-//         oss << "\nEscola: " << getEscola()->getNome();
-//     }
-//     if (getPontoDeParada() != nullptr)
-//     {
-//         oss << "\nPonto de Parada: " << getPontoDeParada()->getNome();
-//     }
-//     return oss.str();
-// }

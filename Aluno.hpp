@@ -31,10 +31,6 @@ public:
     PontoDeParada *getPontoDeParada() const;
     void setPontoDeParada(PontoDeParada *pontoDeParada);
 
-    // std::string apresentarDados() const override;
-    // tranformei em virtual para poder usar o override e o conceito de class abstrata
-    //virtual std:: string apresentarDados()=0;
-    //Nao podemos fazer isso para o aluno, temos que instanciar essa classe!!!
     std::string apresentarDados() const override;
 };
 

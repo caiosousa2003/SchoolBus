@@ -15,70 +15,13 @@
 #include "Rota.hpp"
 #include "Veiculo.hpp"
 
-
-
-vector<Escola> escolas;
-vector<Motorista> motoristas; // Placeholder para a classe Motorista
-vector<Veiculo> veiculos;     // Placeholder para a classe Veiculo
-vector<Contrato> contratos;   // Placeholder para a classe Contrato
-vector<PontoDeParada> pontos; // Placeholder para a classe PontoDeParada
-vector<Rota> rotas;           // Placeholder para a classe Rota
-vector<Pessoa> pessoas;       // Placeholder para a classe Pessoa
-
-// using namespace std;
-
-void menuCriacao()
-{
-    int n;
-
-    do
-    {
-        std::cout << "Menu Interativo\n"
-             << std::endl;
-        std::cout << "1 - Criar Aluno\n2 - Criar Motorista\n3 - Criar Contrato\n4 - Criar Escola\n";
-        std::cout << "5 - Criar Veiculo\n6 - Criar Ponto de Parada\n7 - Criar Nova Rota\n";
-        std::cout << "8 - Criar Fornecedor\n0 - Voltar\n"
-             << std::endl;
-
-        std::cout << "Escolha o número correspondente: ";
-        std::cin >> n;
-        std::cin.ignore();
-
-        switch (n)
-        {
-        case 1:
-            criarAluno();
-            break;
-        case 2:
-            // Placeholder para a função criarMotorista()
-            std::cout << "Criar Motorista" << std::endl;
-            break;
-        case 3:
-            // Placeholder para a função criarContrato()
-            std::cout << "Criar Contrato" << std::endl;
-            break;
-        case 4:
-            // Placeholder para a função criarEscola()
-            std::cout << "Criar Escola" << std::endl;
-            break;
-        case 5:
-            // Placeholder para a função criarVeiculo()
-            std::cout << "Criar Veiculo" << std::endl;
-            break;
-        case 6:
-            // Placeholder para a função criarPontoParada()
-            std::cout << "Criar Ponto de Parada" << std::endl;
-            break;
-        case 7:
-            // Placeholder para a função criarRota()
-            std::cout << "Criar Nova Rota" << std::endl;
-            break;
-        case 8:
-            criarFornecedor();
-            break;
-        }
-    } while (n != 0);
-}
+std::vector<Escola> escolas;
+std::vector<Motorista> motoristas;
+std::vector<Veiculo> veiculos;
+std::vector<Contrato> contratos;
+std::vector<PontoDeParada> pontos;
+std::vector<Rota> rotas;
+std::vector<Pessoa> pessoas;
 
 Endereco criarEndereco()
 {
@@ -86,14 +29,14 @@ Endereco criarEndereco()
     int numero;
 
     std::cout << "Rua: ";
-    std::getline(cin, rua);
+    std::getline(std::cin, rua);
     std::cout << "Número: ";
     std::cin >> numero;
     std::cin.ignore();
     std::cout << "Complemento: ";
-    std::getline(cin, complemento);
+    std::getline(std::cin, complemento);
     std::cout << "Bairro: ";
-    std::getline(cin, bairro);
+    std::getline(std::cin, bairro);
 
     return Endereco(rua, numero, complemento, bairro);
 }
@@ -103,7 +46,7 @@ void criarAluno()
     if (escolas.empty())
     {
         std::cout << "\nNenhuma escola cadastrada ainda!\nVoltando...\n"
-             << std::endl;
+                  << std::endl;
     }
     else
     {
@@ -111,7 +54,7 @@ void criarAluno()
         std::cout << "\nSelecione a Escola: " << std::endl;
         for (size_t idx = 0; idx < escolas.size(); ++idx)
         {
-            std::cout << idx << " - " << escolas[idx].getNome() << std::endl;
+            std::cout << idx << " - " << escolas[idx].getNome() << std::endl; // Verificar esse erro de interação
         }
         std::cout << "\nInsira o número correspondente: ";
         std::cin >> i;
@@ -120,24 +63,24 @@ void criarAluno()
         std::string nomeCivil, nome, mae, pai, naturalidade, cpf, telefone, serie;
         std::cout << "\nPreencha as seguintes informações:" << std::endl;
         std::cout << "Nome Civil: ";
-        std::getline(cin, nomeCivil);
+        std::getline(std::cin, nomeCivil);
         std::cout << "Nome Social: ";
-        std::getline(cin, nome);
+        std::getline(std::cin, nome);
         std::cout << "Nome da Mãe: ";
-        std::getline(cin, mae);
+        std::getline(std::cin, mae);
         std::cout << "Nome do Pai: ";
-        std::getline(cin, pai);
+        std::getline(std::cin, pai);
         std::cout << "Naturalidade: ";
-        std::getline(cin, naturalidade);
+        std::getline(std::cin, naturalidade);
         std::cout << "CPF: ";
-        std::getline(cin, cpf);
+        std::getline(std::cin, cpf);
 
         tm dataNascimento = {};
         std::cout << "Data de Nascimento (dd/MM/yyyy): ";
         std::string dataNascimentoStr;
-        std::getline(cin, dataNascimentoStr);
+        std::getline(std::cin, dataNascimentoStr);
         std::istringstream ss(dataNascimentoStr);
-        ss >> get_time(&dataNascimento, "%d/%m/%Y");
+        ss >> std::get_time(&dataNascimento, "%d/%m/%Y");
         if (ss.fail())
         {
             std::cout << "Formato de data inválido." << std::endl;
@@ -155,9 +98,9 @@ void criarAluno()
         std::cout << "Série: ";
         std::getline(std::cin, serie);
 
-        std::string endereco; // Placeholder para a função criarEndereco()
-        std::cout << "Aluno criado com sucesso! Voltando para menu" << std::endl;
+        Endereco endereco = criarEndereco();
         escolas[i].matriculaAluno(nomeCivil, cpf, endereco, telefone, nome, mae, pai, naturalidade, dataNascimento, matricula, serie);
+        std::cout << "Aluno criado com sucesso! Voltando para menu" << std::endl;
     }
 }
 
@@ -179,7 +122,8 @@ void criarFornecedor()
     std::cin.ignore();
 
     Endereco endereco = criarEndereco();
-    pessoas.push_back("Fornecedor"); // Placeholder para adicionar objeto Fornecedor à lista de pessoas
+    Fornecedor fornecedor(nome, cnpj, endereco, telefone, nomeFantasia, num);
+    pessoas.push_back(fornecedor);
 }
 
 void criarMotorista()
@@ -209,7 +153,7 @@ void criarMotorista()
     std::getline(std::cin, pai);
     std::cout << "Naturalidade: ";
     std::getline(std::cin, naturalidade);
-    cout << "CPF: ";
+    std::cout << "CPF: ";
     std::getline(std::cin, cpfcnpj);
 
     std::cout << "Data de Nascimento (dd/MM/yyyy): ";
@@ -233,8 +177,8 @@ void criarMotorista()
     Endereco endereco = criarEndereco();
     Motorista motorista(nomeCivil, cpfcnpj, endereco, telefone, nome, mae, pai, naturalidade, dataNascimento, numhabilitacao, cathabilitacao, numcontrato);
 
-    motoristas.push_back("Motorista"); // Placeholder para adicionar objeto Motorista à lista de motoristas
-    std::cout << "Motorista criado com sucesso! Voltando para menu" << endl;
+    motoristas.push_back(motorista);
+    std::cout << "Motorista criado com sucesso! Voltando para menu" << std::endl;
 }
 
 void criarVeiculo()
@@ -265,8 +209,8 @@ void criarVeiculo()
     }
 
     Veiculo veiculo(placa, ano, modelo, capacidade, numcontrato);
-    veiculos.push_back("Veiculo"); // Placeholder para adicionar objeto Veiculo à lista de veiculos
-    std::cout << "Veiculo criado com sucesso! Voltando para menu" << endl;
+    veiculos.push_back(veiculo);
+    std::cout << "Veiculo criado com sucesso! Voltando para menu" << std::endl;
 }
 
 void criarContrato()
@@ -281,9 +225,9 @@ void criarContrato()
     std::cin.ignore();
 
     std::cout << "Data de Início (dd/MM/yyyy): ";
-    std::getline(cin, dateinicioStr);
+    std::getline(std::cin, dateinicioStr);
     std::istringstream ssInicio(dateinicioStr);
-    ssInicio >> get_time(&dateinicio, "%d/%m/%Y");
+    ssInicio >> std::get_time(&dateinicio, "%d/%m/%Y");
     if (ssInicio.fail())
     {
         std::cout << "Formato de data inválido." << std::endl;
@@ -293,7 +237,7 @@ void criarContrato()
     std::cout << "Data de Fim (dd/MM/yyyy): ";
     std::getline(std::cin, datefimStr);
     std::istringstream ssFim(datefimStr);
-    ssFim >> get_time(&datefim, "%d/%m/%Y");
+    ssFim >> std::get_time(&datefim, "%d/%m/%Y");
     if (ssFim.fail())
     {
         std::cout << "Formato de data inválido." << std::endl;
@@ -310,22 +254,25 @@ void criarContrato()
     std::cin >> i;
     std::cin.ignore();
 
+    // Consertar essa lógica
     if (i == 1)
     {
         for (size_t idx = 0; idx < pessoas.size(); ++idx)
         {
-            std::cout << idx << " - " << "NomeOficial"; 
+            Fornecedor *fornecedor = dynamic_cast<Fornecedor *>(pessoas[idx]);
+            if (fornecedor)
+            {
+                std::cout << idx << " - " << fornecedor->getNomeOficial() << std::endl;
+            }
         }
         std::cout << "\nInsira o número correspondente: ";
         std::cin >> n;
         std::cin.ignore();
 
-        contrato.addFornecedor(/* parâmetros apropriados */);
+        contrato.addFornecedor(/* parâmetros apropriados */); // até aqui
     }
-    contratos.push_back("Contrato"); 
+    contratos.push_back(contrato);
 }
-//////////modificar aqui em cima, lógica de adicionar fornecedor ao contrato
-
 
 void criarEscola()
 {
@@ -345,7 +292,8 @@ void criarEscola()
     std::cin.ignore();
 
     Endereco endereco = criarEndereco();
-    escolas.push_back("Escola"); 
+    Escola escola(nome, cnpj, endereco, telefone, nomeFantasia, num);
+    escolas.push_back(escola);
     std::cout << "Escola criada com sucesso! Voltando para menu" << std::endl;
 }
 
@@ -373,31 +321,32 @@ void criarPontoParada()
         std::cout << "\nSelecione a Escola do aluno para esse ponto de parada: ";
         for (size_t idx = 0; idx < escolas.size(); ++idx)
         {
-            std::cout << (idx + 1) << " - " << "Nome"; 
+            std::cout << (idx + 1) << " - " << "Nome"; // Nome da escola
         }
         std::cout << "\nInsira o número correspondente (Quando finalizar, insira 0): ";
         std::cin >> i;
         std::cin.ignore();
         if (i == 0)
             break;
+
+        std::vector<Aluno> alunosEscola = escolas[i - 1].getAlunos();
         do
         {
             std::cout << "\nSelecione os Alunos para esse ponto de parada: ";
-            vector<string> alunosEscola = escolas[i - 1].getAlunos();
             for (size_t j = 0; j < alunosEscola.size(); ++j)
             {
-                std::cout << (j + 1) << " - " << "NomeCivil"; 
+                std::cout << (j + 1) << " - " << "NomeCivil"; // Pegar nome do aluno (Implementar)
             }
             std::cout << "\nInsira o número correspondente (Quando finalizar, insira 0): ";
             std::cin >> n;
             std::cin.ignore();
             if (n == 0)
                 break;
-            alunos.push_back(alunosEscola[n - 1]);
+            alunosEscola.push_back(escolas[i - 1].getAlunos()[n - 1]);
         } while (n != 0);
     } while (i != 0);
 
-    pontos.push_back("PontoDeParada"); 
+    pontos.push_back(new PontoDeParada(nome, latitude, longitude, id, alunosEscola)); // Verificar bug
     std::cout << "Ponto de Parada criado com sucesso! Voltando para menu" << std::endl;
 }
 
@@ -411,19 +360,65 @@ void criarRota()
         std::cout << "Rota criada com sucesso! Adicionando pontos a ela:";
         for (size_t idx = 0; idx < pontos.size(); ++idx)
         {
-            std::cout << (idx + 1) << " - " << "Nome"; 
+            std::cout << (idx + 1) << " - " << "Nome"; // Pegar nome dos pontos de parada
         }
         std::cout << "\nInsira o número correspondente (Quando finalizar, insira 0): ";
         std::cin >> i;
         std::cin.ignore();
         if (i == 0)
             break;
-        rota.addPontoDeParada(PontoDeParada("Nome", 0, 0, 0, vector<string>())); 
-        // Adicionar o "nome" certo, consertar a lógica do PontoDeParada
+        rota.addPontoDeParada(pontos[i - 1]);
     } while (i != 0);
 
-    rotas.push_back("Rota"); 
+    rotas.push_back(rota);
     std::cout << "Pontos adicionados com sucesso! Voltando para menu" << std::endl;
+}
+
+void menuCriacao()
+{
+    int n;
+
+    do
+    {
+        std::cout << "Menu Interativo\n"
+                  << std::endl;
+        std::cout << "1 - Criar Aluno\n2 - Criar Motorista\n3 - Criar Contrato\n4 - Criar Escola\n";
+        std::cout << "5 - Criar Veiculo\n6 - Criar Ponto de Parada\n7 - Criar Nova Rota\n";
+        std::cout << "8 - Criar Fornecedor\n0 - Voltar\n"
+                  << std::endl;
+
+        std::cout << "Escolha o número correspondente: ";
+        std::cin >> n;
+        std::cin.ignore();
+
+        switch (n)
+        {
+        case 1:
+            criarAluno();
+            break;
+        case 2:
+            criarMotorista();
+            break;
+        case 3:
+            criarContrato();
+            break;
+        case 4:
+            criarEscola();
+            break;
+        case 5:
+            criarVeiculo();
+            break;
+        case 6:
+            criarPontoParada();
+            break;
+        case 7:
+            criarRota();
+            break;
+        case 8:
+            criarFornecedor();
+            break;
+        }
+    } while (n != 0);
 }
 
 Rota escolherRota()
@@ -457,7 +452,7 @@ void mostrarDados()
         std::cout << "\nSelecione a Escola do aluno: " << std::endl;
         for (Escola x : escolas)
         {
-            std::cout << (escolas.indexOf(x) + 1) << " - " << x.getNome() << std::endl;
+            std::cout << (escolas.indexOf(x) + 1) << " - " << x.getNome() << std::endl; // Verificar existência do indexOf
         }
         std::cout << "\nInsira o número correspondente: ";
         std::cin >> n;
@@ -466,7 +461,7 @@ void mostrarDados()
         std::cout << "\nSelecione os Alunos para esse ponto de parada: " << std::endl;
         for (Aluno y : escolas[n - 1].getAlunos())
         {
-            cout << (escolas[n - 1].getAlunos().indexOf(y) + 1) << " - " << y.getNomeCivil() << endl;
+            std::cout << (escolas[n - 1].getAlunos().indexOf(y) + 1) << " - " << y.getNomeCivil() << std::endl;
         }
         std::cout << "\nInsira o número correspondente: ";
         std::cin >> a;
@@ -536,11 +531,11 @@ int main()
     do
     {
         std::cout << "Menu Interativo\n"
-             << endl;
+                  << std::endl;
         std::cout << "1 - Criar Objeto\n2 - Calcular Demanda de uma Rota\n3 - Exibir Número de Rotas\n";
         std::cout << "4 - Exibir Número de Ponto de Parada\n5 - Exibir Informação de um Objeto\n6 - Exibir Tipo do Objeto\n";
         std::cout << "0 - Sair do Programa\n"
-             << std::endl;
+                  << std::endl;
 
         std::cout << "Escolha o número correspondente: ";
         std::cin >> n;
@@ -553,19 +548,18 @@ int main()
             break;
         case 2:
         {
-            std::string rota = escolherRota();
-            // ????? essa função não existe em lugar nenhum
-            std::cout << "\nDemanda da Rota " << rota << ": [Demanda]" << "\n"
-                 << std::endl;
+            Rota rota = escolherRota();
+            std::cout << "\nDemanda da Rota " << rota.getId() << ": " << rota.demanda() << "\n"
+                      << std::endl;
         }
         break;
         case 3:
             std::cout << "\nNúmero de Rotas Criadas: " << rotas.size() << "\n"
-                 << std::endl;
+                      << std::endl;
             break;
         case 4:
             std::cout << "\nNúmero de Pontos Criados: " << pontos.size() << "\n"
-                 << std::endl;
+                      << std::endl;
             break;
         case 5:
             mostrarDados();
