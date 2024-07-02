@@ -4,6 +4,7 @@
 #include <string>
 #include <sstream>
 #include <ctime>
+#include <algorithm>
 
 #include "Aluno.hpp"
 #include "Contrato.hpp"
@@ -329,7 +330,7 @@ void criarPontoParada()
         if (i == 0)
             break;
 
-        std::vector<Aluno> alunosEscola = escolas[i - 1].getAlunos();
+        std::vector<Aluno*> alunosEscola = escolas[i - 1].getAlunos();
         do
         {
             std::cout << "\nSelecione os Alunos para esse ponto de parada: ";
@@ -435,9 +436,16 @@ Rota escolherRota()
 
     return rotas[i - 1];
 }
-
-void mostrarDados()
-{
+    template<typename T>
+    int indexOf(const std::vector<T>& vec, const T& item) {
+        for (size_t i = 0; i < vec.size(); ++i) {
+            if (vec[i] == item) {
+                return i;
+            }
+        }
+        return -1;
+    }
+void mostrarDados() {
     std::cout << "Escolha o objeto que quer ver\n1-Aluno\n2-Motorista\n3-Escola\n4-Fornecedor";
     int i;
     std::cin >> i;
@@ -446,74 +454,95 @@ void mostrarDados()
     int n;
     int a;
 
-    switch (i)
-    {
+    switch (i) {
     case 1:
         std::cout << "\nSelecione a Escola do aluno: " << std::endl;
-        for (Escola x : escolas)
-        {
-            std::cout << (escolas.indexOf(x) + 1) << " - " << x.getNome() << std::endl; // Verificar existência do indexOf
+        for (size_t j = 0; j < escolas.size(); ++j) {
+            std::cout << (j + 1) << " - " << escolas[j].getNome() << std::endl;
         }
         std::cout << "\nInsira o número correspondente: ";
         std::cin >> n;
         std::cin.ignore();
 
+        if (n <= 0 || n > escolas.size()) {
+            std::cerr << "Número inválido" << std::endl;
+            return;
+        }
+
         std::cout << "\nSelecione os Alunos para esse ponto de parada: " << std::endl;
-        for (Aluno y : escolas[n - 1].getAlunos())
-        {
-            std::cout << (escolas[n - 1].getAlunos().indexOf(y) + 1) << " - " << y.getNomeCivil() << std::endl;
+        const auto& alunos = escolas[n - 1].getAlunos();
+        for (size_t j = 0; j < alunos.size(); ++j) {
+            std::cout << (j + 1) << " - " << alunos[j]->getNomeCivil() << std::endl;
         }
         std::cout << "\nInsira o número correspondente: ";
         std::cin >> a;
         std::cin.ignore();
 
-        std::cout << escolas[n - 1].getAlunos()[a - 1].apresentarDados() << std::endl;
-        break;
-    case 3:
-        std::cout << "\nSelecione a Escola: " << std::endl;
-        for (Escola x : escolas)
-        {
-            std::cout << (escolas.indexOf(x) + 1) << " - " << x.getNome() << std::endl;
+        if (a <= 0 || a > alunos.size()) {
+            std::cerr << "Número inválido" << std::endl;
+            return;
         }
-        std::cout << "\nInsira o número correspondente: ";
-        std::cin >> n;
-        std::cin.ignore();
 
-        std::cout << escolas[n - 1].apresentarDados() << std::endl;
+        std::cout << alunos[a - 1]->apresentarDados() << std::endl;
         break;
     case 2:
         std::cout << "\nSelecione o Motorista: " << std::endl;
-        for (Motorista x : motoristas)
-        {
-            std::cout << (motoristas.indexOf(x) + 1) << " - " << x.getNomeCivil() << std::endl;
+        for (size_t j = 0; j < motoristas.size(); ++j) {
+            std::cout << (j + 1) << " - " << motoristas[j].getNomeCivil() << std::endl;
         }
         std::cout << "\nInsira o número correspondente: ";
         std::cin >> n;
         std::cin.ignore();
+
+        if (n <= 0 || n > motoristas.size()) {
+            std::cerr << "Número inválido" << std::endl;
+            return;
+        }
 
         std::cout << motoristas[n - 1].apresentarDados() << std::endl;
         break;
-    case 4:
-        std::cout << "\nSelecione o Fornecedor: " << std::endl;
-        for (Pessoa x : pessoas)
-        {
-            std::cout << (pessoas.indexOf(x) + 1) << " - " << x.getNomeOficial() << std::endl;
+    case 3:
+        std::cout << "\nSelecione a Escola: " << std::endl;
+        for (size_t j = 0; j < escolas.size(); ++j) {
+            std::cout << (j + 1) << " - " << escolas[j].getNome() << std::endl;
         }
         std::cout << "\nInsira o número correspondente: ";
         std::cin >> n;
         std::cin.ignore();
 
+        if (n <= 0 || n > escolas.size()) {
+            std::cerr << "Número inválido" << std::endl;
+            return;
+        }
+
+        std::cout << escolas[n - 1].apresentarDados() << std::endl;
+        break;
+    case 4:
+        std::cout << "\nSelecione o Fornecedor: " << std::endl;
+        for (size_t j = 0; j < pessoas.size(); ++j) {
+            std::cout << (j + 1) << " - " << pessoas[j].getNomeOficial() << std::endl;
+        }
+        std::cout << "\nInsira o número correspondente: ";
+        std::cin >> n;
+        std::cin.ignore();
+
+        if (n <= 0 || n > pessoas.size()) {
+            std::cerr << "Número inválido" << std::endl;
+            return;
+        }
+
         std::cout << pessoas[n - 1].apresentarDados() << std::endl;
+        break;
+    default:
+        std::cerr << "Opção inválida" << std::endl;
         break;
     }
 }
 
-void mostrarTipo()
-{
+void mostrarTipo() {
     std::cout << "Escolha objeto: " << std::endl;
-    for (Pessoa x : pessoas)
-    {
-        std::cout << (pessoas.indexOf(x) + 1) << " - " << x.getNomeOficial() << std::endl;
+    for (size_t j = 0; j < pessoas.size(); ++j) {
+        std::cout << (j + 1) << " - " << pessoas[j].getNomeOficial() << std::endl;
     }
 
     std::cout << "\nInsira o número correspondente: ";
@@ -521,9 +550,13 @@ void mostrarTipo()
     std::cin >> n;
     std::cin.ignore();
 
+    if (n <= 0 || n > pessoas.size()) {
+        std::cerr << "Número inválido" << std::endl;
+        return;
+    }
+
     std::cout << "Tipo do Objeto: " << pessoas[n - 1].verificarTipo() << std::endl;
 }
-
 int main()
 {
     int n;
