@@ -276,7 +276,12 @@ void criarContrato()
         std::cin >> n;
         std::cin.ignore();
 
-        contrato.addFornecedor(/* parâmetros apropriados */); // até aqui
+        // contrato.addFornecedor(/* parâmetros apropriados */); // até aqui
+        Fornecedor* fornecedor = dynamic_cast<Fornecedor*>(pessoas[n].get());
+        if (fornecedor) {
+            contrato.addFornecedor(fornecedor);
+        }
+        
     }
     contratos.push_back(contrato);
 }
