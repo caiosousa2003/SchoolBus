@@ -5,6 +5,8 @@
 #include <sstream>
 #include <ctime>
 #include <algorithm>
+#include <memory>
+
 
 #include "Aluno.hpp"
 #include "Contrato.hpp"
@@ -20,9 +22,11 @@ std::vector<Escola> escolas;
 std::vector<Motorista> motoristas;
 std::vector<Veiculo> veiculos;
 std::vector<Contrato> contratos;
-std::vector<PontoDeParada> pontos;
+std::vector<std::unique_ptr<PontoDeParada>> pontos;
+// std::vector<PontoDeParada> pontos;
 std::vector<Rota> rotas;
-std::vector<Pessoa> pessoas;
+std::vector<std::unique_ptr<Pessoa>> pessoas;
+// std::vector<Pessoa> pessoas;
 
 Endereco criarEndereco()
 {
@@ -123,8 +127,9 @@ void criarFornecedor()
     std::cin.ignore();
 
     Endereco endereco = criarEndereco();
-    Fornecedor fornecedor(nome, cnpj, endereco, telefone, nomeFantasia, num);
-    pessoas.push_back(fornecedor);
+    // Fornecedor fornecedor(nome, cnpj, endereco, telefone, nomeFantasia, num);
+    // pessoas.push_back(fornecedor);
+    pessoas.push_back(std::make_unique<Fornecedor>(nome, cnpj, endereco, telefone, nomeFantasia, num));
 }
 
 void criarMotorista()
@@ -260,7 +265,8 @@ void criarContrato()
     {
         for (size_t idx = 0; idx < pessoas.size(); ++idx)
         {
-            Fornecedor *fornecedor = dynamic_cast<Fornecedor *>(pessoas[idx]);
+            // Fornecedor *fornecedor = dynamic_cast<Fornecedor *>(pessoas[idx]);
+            Fornecedor *fornecedor = dynamic_cast<Fornecedor *>(pessoas[idx].get());
             if (fornecedor)
             {
                 std::cout << idx << " - " << fornecedor->getNomeOficial() << std::endl;
@@ -304,6 +310,7 @@ void criarPontoParada()
     double latitude, longitude;
     int id, i = -1, n = -1;
     std::vector<std::string> alunos;
+    std::vector<Aluno*> alunosEscola;
 
     std::cout << "Nome da Localização: ";
     std::getline(std::cin, nome);
@@ -347,7 +354,8 @@ void criarPontoParada()
         } while (n != 0);
     } while (i != 0);
 
-    pontos.push_back(new PontoDeParada(nome, latitude, longitude, id, alunosEscola)); // Verificar bug
+    // pontos.push_back(new PontoDeParada(nome, latitude, longitude, id, alunosEscola)); // Verificar bug
+    pontos.push_back(std::make_unique<PontoDeParada>(nome, latitude, longitude, id, alunosEscola));
     std::cout << "Ponto de Parada criado com sucesso! Voltando para menu" << std::endl;
 }
 
@@ -368,7 +376,7 @@ void criarRota()
         std::cin.ignore();
         if (i == 0)
             break;
-        rota.addPontoDeParada(pontos[i - 1]);
+        rota.addPontoDeParada(*pontos[i - 1]);
     } while (i != 0);
 
     rotas.push_back(rota);
@@ -520,7 +528,8 @@ void mostrarDados() {
     case 4:
         std::cout << "\nSelecione o Fornecedor: " << std::endl;
         for (size_t j = 0; j < pessoas.size(); ++j) {
-            std::cout << (j + 1) << " - " << pessoas[j].getNomeOficial() << std::endl;
+            // std::cout << (j + 1) << " - " << pessoas[j].getNomeOficial() << std::endl;
+            std::cout << (j + 1) << " - " << pessoas[j]->getNomeOficial() << std::endl;
         }
         std::cout << "\nInsira o número correspondente: ";
         std::cin >> n;
@@ -531,7 +540,9 @@ void mostrarDados() {
             return;
         }
 
-        std::cout << pessoas[n - 1].apresentarDados() << std::endl;
+        // std::cout << pessoas[n - 1].apresentarDados() << std::endl;
+           std::cout << pessoas[n - 1]->apresentarDados() << std::endl;
+
         break;
     default:
         std::cerr << "Opção inválida" << std::endl;
@@ -542,7 +553,8 @@ void mostrarDados() {
 void mostrarTipo() {
     std::cout << "Escolha objeto: " << std::endl;
     for (size_t j = 0; j < pessoas.size(); ++j) {
-        std::cout << (j + 1) << " - " << pessoas[j].getNomeOficial() << std::endl;
+        std::cout << (j + 1) << " - " << pessoas[j]->getNomeOficial() << std::endl;
+        // std::cout << (j + 1) << " - " << pessoas[j].getNomeOficial() << std::endl;
     }
 
     std::cout << "\nInsira o número correspondente: ";
@@ -555,7 +567,9 @@ void mostrarTipo() {
         return;
     }
 
-    std::cout << "Tipo do Objeto: " << pessoas[n - 1].verificarTipo() << std::endl;
+    // std::cout << "Tipo do Objeto: " << pessoas[n - 1].verificarTipo() << std::endl;
+    std::cout << "Tipo do Objeto: " << pessoas[n - 1]->verificarTipo() << std::endl;
+
 }
 int main()
 {
