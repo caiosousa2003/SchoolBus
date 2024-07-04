@@ -22,6 +22,7 @@ public:
     std::string getNomeOficial() const;
     virtual std::string apresentarDados() const;
     std::string verificarTipo() const;
+    virtual ~Pessoa() = default;	
 };
 
 #endif 
