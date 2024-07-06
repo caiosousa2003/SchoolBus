@@ -328,7 +328,7 @@ void criarPontoParada()
     std::cout << "Identificação (Número): ";
     std::cin >> id;
     std::cin.ignore();
-
+    
     do
     {
         std::cout << "\nSelecione a Escola do aluno para esse ponto de parada: ";
@@ -360,9 +360,16 @@ void criarPontoParada()
     } while (i != 0);
 
     // pontos.push_back(new PontoDeParada(nome, latitude, longitude, id, alunosEscola)); // Verificar bug
-    pontos.push_back(std::make_unique<PontoDeParada>(nome, latitude, longitude, id, alunosEscola));
+    std::vector<Aluno> alunosEscola_;
+    for (const auto& ptr : alunosEscola) {
+        if (ptr != nullptr) {
+            alunosEscola_.push_back(*ptr);
+        }
+    }
+    pontos.push_back(std::make_unique<PontoDeParada>(nome, latitude, longitude, id, alunosEscola_));
     std::cout << "Ponto de Parada criado com sucesso! Voltando para menu" << std::endl;
 }
+
 
 void criarRota()
 {
@@ -468,7 +475,7 @@ void mostrarDados() {
     int a;
 
     switch (i) {
-    case 1:
+    case 1: {
         std::cout << "\nSelecione a Escola do aluno: " << std::endl;
         for (size_t j = 0; j < escolas.size(); ++j) {
             std::cout << (j + 1) << " - " << escolas[j].getNome() << std::endl;
@@ -498,7 +505,10 @@ void mostrarDados() {
 
         std::cout << alunos[a - 1]->apresentarDados() << std::endl;
         break;
-    case 2:
+        }
+
+
+    case 2:{
         std::cout << "\nSelecione o Motorista: " << std::endl;
         for (size_t j = 0; j < motoristas.size(); ++j) {
             std::cout << (j + 1) << " - " << motoristas[j].getNomeCivil() << std::endl;
@@ -514,7 +524,8 @@ void mostrarDados() {
 
         std::cout << motoristas[n - 1].apresentarDados() << std::endl;
         break;
-    case 3:
+        }
+    case 3:{
         std::cout << "\nSelecione a Escola: " << std::endl;
         for (size_t j = 0; j < escolas.size(); ++j) {
             std::cout << (j + 1) << " - " << escolas[j].getNome() << std::endl;
@@ -530,7 +541,8 @@ void mostrarDados() {
 
         std::cout << escolas[n - 1].apresentarDados() << std::endl;
         break;
-    case 4:
+        }
+    case 4:{
         std::cout << "\nSelecione o Fornecedor: " << std::endl;
         for (size_t j = 0; j < pessoas.size(); ++j) {
             // std::cout << (j + 1) << " - " << pessoas[j].getNomeOficial() << std::endl;
@@ -549,9 +561,11 @@ void mostrarDados() {
            std::cout << pessoas[n - 1]->apresentarDados() << std::endl;
 
         break;
-    default:
+        }
+    default:{
         std::cerr << "Opção inválida" << std::endl;
         break;
+        }
     }
 }
 
