@@ -5,6 +5,8 @@
 #include <vector>
 #include "Aluno.hpp" 
 
+class Aluno;
+
 class PontoDeParada
 {
 private:

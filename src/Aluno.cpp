@@ -10,6 +10,12 @@ Aluno::Aluno(const std::string &nome_oficial, const std::string &cpf_cnpj, const
     : PessoaFisica(nome_oficial, cpf_cnpj, endereco, telefone, nomeSocial, mae, pai, naturalidade, nascimento),
       matricula(matricula), serie(serie), escola(nullptr), pontoDeParada(nullptr) {}
 
+Aluno::~Aluno()
+{
+    delete this->escola;
+    delete this->pontoDeParada;
+}
+
 std::string Aluno::getNomeCivil() const
 {
     return PessoaFisica::getNomeCivil();

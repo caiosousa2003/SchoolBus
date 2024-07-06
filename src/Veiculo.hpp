@@ -5,6 +5,8 @@
 #include <iostream>
 #include "Contrato.hpp" 
 
+class Contrato;
+
 class Veiculo
 {
 private:

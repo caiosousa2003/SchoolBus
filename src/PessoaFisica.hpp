@@ -5,7 +5,10 @@
 #include <iostream>
 #include "Pessoa.hpp"
 #include "Endereco.hpp" 
-#include <ctime>       
+#include <ctime>  
+#include<iomanip>
+#include<sstream>
+
 class PessoaFisica : public Pessoa
 {
 private:
@@ -28,6 +31,7 @@ public:
     std::string getCPF() const;
 
     std::string apresentarDados() const override;
+    virtual ~PessoaFisica() = default;
 };
 
 #endif // PESSOA_FISICA_HPP
