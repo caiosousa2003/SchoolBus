@@ -87,3 +87,7 @@ void Veiculo::setContrato(Contrato *contrato)
 {
     this->contrato = contrato;
 }
+
+bool operator==(const Veiculo& lhs, const Veiculo& rhs) {
+    return lhs.getPlaca() == rhs.getPlaca(); 
+}

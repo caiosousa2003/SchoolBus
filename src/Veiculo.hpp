@@ -45,6 +45,8 @@ public:
 
     Contrato *getContrato() const;
     void setContrato(Contrato *contrato);
+
+    friend bool operator==(const Veiculo& lhs, const Veiculo& rhs);
 };
 
 #endif 
