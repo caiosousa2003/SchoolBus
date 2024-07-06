@@ -6,6 +6,8 @@
 #include "PessoaJuridica.hpp"
 #include "Aluno.hpp" 
 
+class Aluno;
+
 class Escola : public PessoaJuridica
 {
 private:

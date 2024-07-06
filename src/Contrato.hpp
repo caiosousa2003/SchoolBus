@@ -9,6 +9,10 @@
 #include "PessoaJuridica.hpp"
 #include "Fornecedor.hpp"
 
+class Motorista;
+class Veiculo; 
+class PessoaJuridica; 
+
 class Contrato
 {
 private:

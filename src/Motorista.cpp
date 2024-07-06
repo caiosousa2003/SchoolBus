@@ -90,3 +90,7 @@ std::string Motorista::apresentarDados() const
         << "\nNúmero de Contrato: " << this->getNumcontrato();
     return oss.str();
 }
+
+bool operator==(const Motorista& lhs, const Motorista& rhs) {
+    return lhs.getCPF() == rhs.getCPF() && lhs.numhabilitacao == rhs.numhabilitacao;
+}

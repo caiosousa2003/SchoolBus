@@ -7,6 +7,7 @@
 #include "PessoaFisica.hpp"
 #include "Escola.hpp"
 #include "PontoDeParada.hpp"
+class PontoDeParada;
 
 class Aluno : public PessoaFisica
 {

@@ -6,6 +6,8 @@
 #include "PessoaFisica.hpp"
 #include "Contrato.hpp"
 
+class Contrato;
+
 class Motorista : public PessoaFisica
 {
 private:
@@ -36,6 +38,7 @@ public:
     void addContrato(Contrato *contrato);
     std::string verificarTipo() const;
     std::string apresentarDados() const override;
+    friend bool operator==(const Motorista& lhs, const Motorista& rhs);
 };
 
 #endif 
