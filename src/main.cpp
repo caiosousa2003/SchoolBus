@@ -7,7 +7,6 @@
 #include <algorithm>
 #include <memory>
 
-
 #include "Aluno.hpp"
 #include "Contrato.hpp"
 #include "Endereco.hpp"
@@ -36,8 +35,13 @@ Endereco criarEndereco()
     std::cout << "Rua: ";
     std::getline(std::cin, rua);
     std::cout << "Número: ";
-    std::cin >> numero;
-    std::cin.ignore();
+    while (!(std::cin >> numero))
+    {
+        std::cout << "Entrada inválida. Por favor, insira um número válido: ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cout << "Complemento: ";
     std::getline(std::cin, complemento);
     std::cout << "Bairro: ";
@@ -59,11 +63,16 @@ void criarAluno()
         std::cout << "\nSelecione a Escola: " << std::endl;
         for (size_t idx = 0; idx < escolas.size(); ++idx)
         {
-            std::cout << idx << " - " << escolas[idx].getNome() << std::endl; // Verificar esse erro de interação
+            std::cout << idx << " - " << escolas[idx].getNome() << std::endl;
         }
         std::cout << "\nInsira o número correspondente: ";
-        std::cin >> i;
-        std::cin.ignore();
+        while (!(std::cin >> i) || i < 0 || i >= escolas.size())
+        {
+            std::cout << "Entrada inválida. Por favor, insira um número válido: ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         std::string nomeCivil, nome, mae, pai, naturalidade, cpf, telefone, serie;
         std::cout << "\nPreencha as seguintes informações:" << std::endl;
@@ -97,8 +106,13 @@ void criarAluno()
 
         int matricula;
         std::cout << "Matrícula: ";
-        std::cin >> matricula;
-        std::cin.ignore();
+        while (!(std::cin >> matricula))
+        {
+            std::cout << "Entrada inválida. Por favor, insira um número válido: ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         std::cout << "Série: ";
         std::getline(std::cin, serie);
@@ -277,11 +291,11 @@ void criarContrato()
         std::cin.ignore();
 
         // contrato.addFornecedor(/* parâmetros apropriados */); // até aqui
-        Fornecedor* fornecedor = dynamic_cast<Fornecedor*>(pessoas[n].get());
-        if (fornecedor) {
+        Fornecedor *fornecedor = dynamic_cast<Fornecedor *>(pessoas[n].get());
+        if (fornecedor)
+        {
             contrato.addFornecedor(fornecedor);
         }
-        
     }
     contratos.push_back(contrato);
 }
@@ -315,7 +329,7 @@ void criarPontoParada()
     double latitude, longitude;
     int id, i = -1, n = -1;
     std::vector<std::string> alunos;
-    std::vector<Aluno*> alunosEscola;
+    std::vector<Aluno *> alunosEscola;
 
     std::cout << "Nome da Localização: ";
     std::getline(std::cin, nome);
@@ -328,7 +342,7 @@ void criarPontoParada()
     std::cout << "Identificação (Número): ";
     std::cin >> id;
     std::cin.ignore();
-    
+
     do
     {
         std::cout << "\nSelecione a Escola do aluno para esse ponto de parada: ";
@@ -342,7 +356,7 @@ void criarPontoParada()
         if (i == 0)
             break;
 
-        std::vector<Aluno*> alunosEscola = escolas[i - 1].getAlunos();
+        std::vector<Aluno *> alunosEscola = escolas[i - 1].getAlunos();
         do
         {
             std::cout << "\nSelecione os Alunos para esse ponto de parada: ";
@@ -361,15 +375,16 @@ void criarPontoParada()
 
     // pontos.push_back(new PontoDeParada(nome, latitude, longitude, id, alunosEscola)); // Verificar bug
     std::vector<Aluno> alunosEscola_;
-    for (const auto& ptr : alunosEscola) {
-        if (ptr != nullptr) {
+    for (const auto &ptr : alunosEscola)
+    {
+        if (ptr != nullptr)
+        {
             alunosEscola_.push_back(*ptr);
         }
     }
     pontos.push_back(std::make_unique<PontoDeParada>(nome, latitude, longitude, id, alunosEscola_));
     std::cout << "Ponto de Parada criado com sucesso! Voltando para menu" << std::endl;
 }
-
 
 void criarRota()
 {
@@ -456,16 +471,20 @@ Rota escolherRota()
 
     return rotas[i - 1];
 }
-    template<typename T>
-    int indexOf(const std::vector<T>& vec, const T& item) {
-        for (size_t i = 0; i < vec.size(); ++i) {
-            if (vec[i] == item) {
-                return i;
-            }
+template <typename T>
+int indexOf(const std::vector<T> &vec, const T &item)
+{
+    for (size_t i = 0; i < vec.size(); ++i)
+    {
+        if (vec[i] == item)
+        {
+            return i;
         }
-        return -1;
     }
-void mostrarDados() {
+    return -1;
+}
+void mostrarDados()
+{
     std::cout << "Escolha o objeto que quer ver\n1-Aluno\n2-Motorista\n3-Escola\n4-Fornecedor";
     int i;
     std::cin >> i;
@@ -474,77 +493,90 @@ void mostrarDados() {
     int n;
     int a;
 
-    switch (i) {
-    case 1: {
+    switch (i)
+    {
+    case 1:
+    {
         std::cout << "\nSelecione a Escola do aluno: " << std::endl;
-        for (size_t j = 0; j < escolas.size(); ++j) {
+        for (size_t j = 0; j < escolas.size(); ++j)
+        {
             std::cout << (j + 1) << " - " << escolas[j].getNome() << std::endl;
         }
         std::cout << "\nInsira o número correspondente: ";
         std::cin >> n;
         std::cin.ignore();
 
-        if (n <= 0 || n > escolas.size()) {
+        if (n <= 0 || n > escolas.size())
+        {
             std::cerr << "Número inválido" << std::endl;
             return;
         }
 
         std::cout << "\nSelecione os Alunos para esse ponto de parada: " << std::endl;
-        const auto& alunos = escolas[n - 1].getAlunos();
-        for (size_t j = 0; j < alunos.size(); ++j) {
+        const auto &alunos = escolas[n - 1].getAlunos();
+        for (size_t j = 0; j < alunos.size(); ++j)
+        {
             std::cout << (j + 1) << " - " << alunos[j]->getNomeCivil() << std::endl;
         }
         std::cout << "\nInsira o número correspondente: ";
         std::cin >> a;
         std::cin.ignore();
 
-        if (a <= 0 || a > alunos.size()) {
+        if (a <= 0 || a > alunos.size())
+        {
             std::cerr << "Número inválido" << std::endl;
             return;
         }
 
         std::cout << alunos[a - 1]->apresentarDados() << std::endl;
         break;
-        }
+    }
 
-
-    case 2:{
+    case 2:
+    {
         std::cout << "\nSelecione o Motorista: " << std::endl;
-        for (size_t j = 0; j < motoristas.size(); ++j) {
+        for (size_t j = 0; j < motoristas.size(); ++j)
+        {
             std::cout << (j + 1) << " - " << motoristas[j].getNomeCivil() << std::endl;
         }
         std::cout << "\nInsira o número correspondente: ";
         std::cin >> n;
         std::cin.ignore();
 
-        if (n <= 0 || n > motoristas.size()) {
+        if (n <= 0 || n > motoristas.size())
+        {
             std::cerr << "Número inválido" << std::endl;
             return;
         }
 
         std::cout << motoristas[n - 1].apresentarDados() << std::endl;
         break;
-        }
-    case 3:{
+    }
+    case 3:
+    {
         std::cout << "\nSelecione a Escola: " << std::endl;
-        for (size_t j = 0; j < escolas.size(); ++j) {
+        for (size_t j = 0; j < escolas.size(); ++j)
+        {
             std::cout << (j + 1) << " - " << escolas[j].getNome() << std::endl;
         }
         std::cout << "\nInsira o número correspondente: ";
         std::cin >> n;
         std::cin.ignore();
 
-        if (n <= 0 || n > escolas.size()) {
+        if (n <= 0 || n > escolas.size())
+        {
             std::cerr << "Número inválido" << std::endl;
             return;
         }
 
         std::cout << escolas[n - 1].apresentarDados() << std::endl;
         break;
-        }
-    case 4:{
+    }
+    case 4:
+    {
         std::cout << "\nSelecione o Fornecedor: " << std::endl;
-        for (size_t j = 0; j < pessoas.size(); ++j) {
+        for (size_t j = 0; j < pessoas.size(); ++j)
+        {
             // std::cout << (j + 1) << " - " << pessoas[j].getNomeOficial() << std::endl;
             std::cout << (j + 1) << " - " << pessoas[j]->getNomeOficial() << std::endl;
         }
@@ -552,26 +584,30 @@ void mostrarDados() {
         std::cin >> n;
         std::cin.ignore();
 
-        if (n <= 0 || n > pessoas.size()) {
+        if (n <= 0 || n > pessoas.size())
+        {
             std::cerr << "Número inválido" << std::endl;
             return;
         }
 
         // std::cout << pessoas[n - 1].apresentarDados() << std::endl;
-           std::cout << pessoas[n - 1]->apresentarDados() << std::endl;
+        std::cout << pessoas[n - 1]->apresentarDados() << std::endl;
 
         break;
-        }
-    default:{
+    }
+    default:
+    {
         std::cerr << "Opção inválida" << std::endl;
         break;
-        }
+    }
     }
 }
 
-void mostrarTipo() {
+void mostrarTipo()
+{
     std::cout << "Escolha objeto: " << std::endl;
-    for (size_t j = 0; j < pessoas.size(); ++j) {
+    for (size_t j = 0; j < pessoas.size(); ++j)
+    {
         std::cout << (j + 1) << " - " << pessoas[j]->getNomeOficial() << std::endl;
         // std::cout << (j + 1) << " - " << pessoas[j].getNomeOficial() << std::endl;
     }
@@ -581,14 +617,14 @@ void mostrarTipo() {
     std::cin >> n;
     std::cin.ignore();
 
-    if (n <= 0 || n > pessoas.size()) {
+    if (n <= 0 || n > pessoas.size())
+    {
         std::cerr << "Número inválido" << std::endl;
         return;
     }
 
     // std::cout << "Tipo do Objeto: " << pessoas[n - 1].verificarTipo() << std::endl;
     std::cout << "Tipo do Objeto: " << pessoas[n - 1]->verificarTipo() << std::endl;
-
 }
 int main()
 {
