@@ -6,7 +6,8 @@
 #include <ctime>
 #include <algorithm>
 #include <memory>
-
+#include <limits> 
+#include <stdexcept>
 
 #include "Aluno.hpp"
 #include "Contrato.hpp"
@@ -260,12 +261,10 @@ void criarContrato()
     std::cin >> i;
     std::cin.ignore();
 
-    // Consertar essa lógica
     if (i == 1)
     {
         for (size_t idx = 0; idx < pessoas.size(); ++idx)
         {
-            // Fornecedor *fornecedor = dynamic_cast<Fornecedor *>(pessoas[idx]);
             Fornecedor *fornecedor = dynamic_cast<Fornecedor *>(pessoas[idx].get());
             if (fornecedor)
             {
@@ -276,7 +275,6 @@ void criarContrato()
         std::cin >> n;
         std::cin.ignore();
 
-        // contrato.addFornecedor(/* parâmetros apropriados */); // até aqui
         Fornecedor* fornecedor = dynamic_cast<Fornecedor*>(pessoas[n].get());
         if (fornecedor) {
             contrato.addFornecedor(fornecedor);
@@ -395,9 +393,24 @@ void criarRota()
     std::cout << "Pontos adicionados com sucesso! Voltando para menu" << std::endl;
 }
 
+
+int validacao_numero(int n){
+    if (n>=0 && n<=8){
+        return n;
+    }else{
+        std::cout << "Número inválido. Selecione um número entre 0 e 8: ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        return -1;
+    
+    }
+}
+
 void menuCriacao()
 {
     int n;
+    
+
 
     do
     {
@@ -410,6 +423,7 @@ void menuCriacao()
 
         std::cout << "Escolha o número correspondente: ";
         std::cin >> n;
+        validacao_numero(n);
         std::cin.ignore();
 
         switch (n)
@@ -545,7 +559,6 @@ void mostrarDados() {
     case 4:{
         std::cout << "\nSelecione o Fornecedor: " << std::endl;
         for (size_t j = 0; j < pessoas.size(); ++j) {
-            // std::cout << (j + 1) << " - " << pessoas[j].getNomeOficial() << std::endl;
             std::cout << (j + 1) << " - " << pessoas[j]->getNomeOficial() << std::endl;
         }
         std::cout << "\nInsira o número correspondente: ";
@@ -557,7 +570,6 @@ void mostrarDados() {
             return;
         }
 
-        // std::cout << pessoas[n - 1].apresentarDados() << std::endl;
            std::cout << pessoas[n - 1]->apresentarDados() << std::endl;
 
         break;
@@ -573,7 +585,6 @@ void mostrarTipo() {
     std::cout << "Escolha objeto: " << std::endl;
     for (size_t j = 0; j < pessoas.size(); ++j) {
         std::cout << (j + 1) << " - " << pessoas[j]->getNomeOficial() << std::endl;
-        // std::cout << (j + 1) << " - " << pessoas[j].getNomeOficial() << std::endl;
     }
 
     std::cout << "\nInsira o número correspondente: ";
@@ -586,10 +597,22 @@ void mostrarTipo() {
         return;
     }
 
-    // std::cout << "Tipo do Objeto: " << pessoas[n - 1].verificarTipo() << std::endl;
     std::cout << "Tipo do Objeto: " << pessoas[n - 1]->verificarTipo() << std::endl;
 
 }
+int validacoa(int n){
+    if (n>=0 && n<=6){
+        return n;
+    }else{
+        std::cout << "Número inválido. Selecione um número entre 0 e 6: ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        return -1;
+    
+    }
+}
+
+
 int main()
 {
     int n;
@@ -605,6 +628,7 @@ int main()
 
         std::cout << "Escolha o número correspondente: ";
         std::cin >> n;
+        validacoa(n);
         std::cin.ignore();
 
         switch (n)
