@@ -37,3 +37,18 @@ int PontoDeParada::getPontos()
 {
     return pontos;
 }
+
+std::ostream& operator<<(std::ostream& os, const PontoDeParada& pontoDeParada) {
+    os << "Nome: " << pontoDeParada.getNome() << "\n"
+       << "Latitude: " << pontoDeParada.getLatitude() << "\n"
+       << "Longitude: " << pontoDeParada.getLongitude() << "\n"
+       << "ID: " << pontoDeParada.getId() << "\n"
+       << "Alunos: ";
+
+    for (const auto& aluno : pontoDeParada.getAlunos()) {
+        os << aluno.getNomeCivil() << " "; // Supondo que Aluno tem um método getNomeCivil()
+    }
+    os << "\n";
+    
+    return os;
+}

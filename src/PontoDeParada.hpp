@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 #include "Aluno.hpp" 
 
 class Aluno;
@@ -27,5 +28,6 @@ public:
     std::vector<Aluno> getAlunos() const;
     static int getPontos();
 };
+std::ostream& operator<<(std::ostream& os, const PontoDeParada& pontoDeParada);
 
 #endif 

@@ -46,3 +46,7 @@ Escola::~Escola()
         delete aluno;
     }
 }
+std::ostream& operator<<(std::ostream& os, const Escola& escola) {
+    os << escola.getNome();
+    return os;
+}

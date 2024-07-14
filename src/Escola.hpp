@@ -29,5 +29,5 @@ public:
 
     ~Escola(); 
 };
-
+std::ostream& operator<<(std::ostream& os, const Escola& escola);
 #endif // ESCOLA_HPP

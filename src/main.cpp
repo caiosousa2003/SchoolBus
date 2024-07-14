@@ -128,8 +128,7 @@ void criarFornecedor()
     std::cin.ignore();
 
     Endereco endereco = criarEndereco();
-    // Fornecedor fornecedor(nome, cnpj, endereco, telefone, nomeFantasia, num);
-    // pessoas.push_back(fornecedor);
+ 
     pessoas.push_back(std::make_unique<Fornecedor>(nome, cnpj, endereco, telefone, nomeFantasia, num));
 }
 
@@ -307,6 +306,8 @@ void criarEscola()
     std::cout << "Escola criada com sucesso! Voltando para menu" << std::endl;
 }
 
+
+
 void criarPontoParada()
 {
     std::string nome;
@@ -318,7 +319,7 @@ void criarPontoParada()
     std::cout << "Nome da Localização: ";
     std::getline(std::cin, nome);
     std::cout << "Latitude: ";
-    std::cin >> latitude;
+    std::cin >> latitude;   
     std::cin.ignore();
     std::cout << "Longitude: ";
     std::cin >> longitude;
@@ -332,7 +333,7 @@ void criarPontoParada()
         std::cout << "\nSelecione a Escola do aluno para esse ponto de parada: ";
         for (size_t idx = 0; idx < escolas.size(); ++idx)
         {
-            std::cout << (idx + 1) << " - " << "Nome"; // Nome da escola
+            std::cout << (idx + 1) << " - " << escolas[idx]<< "\n"; 
         }
         std::cout << "\nInsira o número correspondente (Quando finalizar, insira 0): ";
         std::cin >> i;
@@ -346,7 +347,7 @@ void criarPontoParada()
             std::cout << "\nSelecione os Alunos para esse ponto de parada: ";
             for (size_t j = 0; j < alunosEscola.size(); ++j)
             {
-                std::cout << (j + 1) << " - " << "NomeCivil"; // Pegar nome do aluno (Implementar)
+                std::cout << (j + 1) << " - " << alunosEscola[j]->getNomeCivil(); 
             }
             std::cout << "\nInsira o número correspondente (Quando finalizar, insira 0): ";
             std::cin >> n;
@@ -357,7 +358,6 @@ void criarPontoParada()
         } while (n != 0);
     } while (i != 0);
 
-    // pontos.push_back(new PontoDeParada(nome, latitude, longitude, id, alunosEscola)); // Verificar bug
     std::vector<Aluno> alunosEscola_;
     for (const auto& ptr : alunosEscola) {
         if (ptr != nullptr) {
@@ -367,6 +367,8 @@ void criarPontoParada()
     pontos.push_back(std::make_unique<PontoDeParada>(nome, latitude, longitude, id, alunosEscola_));
     std::cout << "Ponto de Parada criado com sucesso! Voltando para menu" << std::endl;
 }
+
+
 
 
 void criarRota()
@@ -379,7 +381,7 @@ void criarRota()
         std::cout << "Rota criada com sucesso! Adicionando pontos a ela:";
         for (size_t idx = 0; idx < pontos.size(); ++idx)
         {
-            std::cout << (idx + 1) << " - " << "Nome"; // Pegar nome dos pontos de parada
+            std::cout << (idx + 1) << " - " << *pontos[idx]; 
         }
         std::cout << "\nInsira o número correspondente (Quando finalizar, insira 0): ";
         std::cin >> i;
@@ -480,7 +482,7 @@ Rota escolherRota()
         return -1;
     }
 void mostrarDados() {
-    std::cout << "Escolha o objeto que quer ver\n1-Aluno\n2-Motorista\n3-Escola\n4-Fornecedor";
+    std::cout << "Escolha o objeto que quer ver\n1-Aluno\n2-Motorista\n3-Escola\n4-Fornecedor: ";
     int i;
     std::cin >> i;
     std::cin.ignore();
